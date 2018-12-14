@@ -26,7 +26,7 @@ public class InventoryViewEndpoint implements ServiceEndpointDefinition {
 
     @Override
     public ServiceResponse interact(Object o) {
-        Exception problem = new Exception("Unknown error");
+        Exception problem;
         ImmutableMap<String, Integer> result = null;
         InventoryViewRequest request = (InventoryViewRequest)o;
         String username = request.getUsername();
@@ -40,6 +40,7 @@ public class InventoryViewEndpoint implements ServiceEndpointDefinition {
                 inventory = inventoryListing.get(username);
             }
             result = inventory.getInventory();
+            problem = null;
         } catch( Exception e ) {
             problem = e;
         }
