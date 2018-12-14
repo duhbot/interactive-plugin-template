@@ -41,7 +41,7 @@ public class InventoryChangeEndpoint implements ServiceEndpointDefinition {
                     }
                 } else {
                     if (!inventoryListing.containsKey(username)) {
-                        throw new Exception(String.format("No inventory for user " +
+                        throw new InventoryProblem(String.format("No inventory for user " +
                                 "%s", username));
                     }
                 }
@@ -52,11 +52,11 @@ public class InventoryChangeEndpoint implements ServiceEndpointDefinition {
                     ImmutableMap<String, Integer> invListing =
                             inventory.getInventory();
                     if( !invListing.containsKey(item) ) {
-                        throw new Exception(String.format("User %s inventory " +
+                        throw new InventoryProblem(String.format("User %s inventory " +
                                         "contains no %s, cannot remove any", username
                                 , item));
                     } else if( invListing.get(item) < Math.abs(count)) {
-                        throw new Exception(String.format("User %s inventory " +
+                        throw new InventoryProblem(String.format("User %s inventory " +
                                         "has %d %s, cannot remove %d", username,
                                 invListing.get(item), item, Math.abs(count)));
                     }

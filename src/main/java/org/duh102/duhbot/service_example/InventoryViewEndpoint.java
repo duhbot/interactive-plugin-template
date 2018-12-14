@@ -34,7 +34,7 @@ public class InventoryViewEndpoint implements ServiceEndpointDefinition {
         try {
             synchronized (inventoryListing) {
                 if (!inventoryListing.containsKey(username)) {
-                    throw new Exception(String.format("No inventory for user " +
+                    throw new InventoryProblem(String.format("No inventory for user " +
                             "%s", username));
                 }
                 inventory = inventoryListing.get(username);

@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 public class ServiceProviderExample implements ServiceProviderPlugin {
-    public static final String SERVICE_ENDPOINT = "service-example";
+    public static final String SERVICE_ENDPOINT = "service-provider-example";
     public ConcurrentMap<String, Inventory> inventoryMap =
             new ConcurrentHashMap<>();
     @Override
